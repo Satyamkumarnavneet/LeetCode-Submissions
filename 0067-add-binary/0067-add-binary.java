@@ -16,7 +16,6 @@ class Solution {
             }
             //ans= Integer.toString((x+y+carry)%2)) + ans;
             ans= Integer.toString((x + y + carry) % 2) + ans;
-
             //ans=to_string();
             carry=(x+y+carry)/2;
             i+=1;
