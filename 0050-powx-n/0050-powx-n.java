@@ -1,29 +1,20 @@
 class Solution {
     public double myPow(double x, int n) {
-        if (n == 0) {
-            return 1;
+        double ans = 1.0;
+        long nn = n;
+        if(nn <0){
+            nn = (-1)*nn;
         }
-        if (x == 0) {
-            return 0;
-        }
-        if (n < 0) {
-            if (n == Integer.MIN_VALUE) {
-                // to avoid overflow when taking the absolute value of n
-                n = Integer.MAX_VALUE;
-                x = 1/x * 1/x;
+        while(nn > 0){
+            if(nn % 2 == 1){
+                ans = ans * x;
+                nn = nn-1;
             } else {
-                n = -n;
-                x = 1/x;
+                x = x*x;
+                nn = nn/2;
             }
         }
-        double result = 1;
-        while (n > 0) {
-            if (n % 2 == 1) {
-                result *= x;
-            }
-            x *= x;
-            n /= 2;
-        }
-        return result;
+        if(n<0) ans = (double)(1.0)/(double)(ans);
+        return ans;
     }
 }
