@@ -7,17 +7,17 @@ class Solution {
                 st.push(curr);
             } else {
                 if(st.isEmpty()){
-                return false;
+                    return false;
+                }
+                char c = st.pop();
+                if(curr == ')' && c == '(' || curr == '}' && c == '{' || curr == ']' && c =='[' ){
+                    continue;
+                } else {
+                    return false;
+                }
             }
-            char c = st.pop();
-            if(curr == ')' && c == '(' || curr == '}' && c == '{' || curr == ']' && c == '['){
-                continue;
-            } else{
-                return false;
-            }
-        }
-            
         }
         return st.isEmpty();
+        
     }
 }
