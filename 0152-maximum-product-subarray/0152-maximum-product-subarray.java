@@ -6,7 +6,7 @@ class Solution {
 
         int maxProduct = nums[0];
         int minProduct = nums[0];
-        int result = maxProduct;
+        int finalResult = nums[0];
 
         for (int i = 1; i < nums.length; i++) {
             if (nums[i] < 0) {
@@ -18,9 +18,9 @@ class Solution {
             maxProduct = Math.max(nums[i], maxProduct * nums[i]);
             minProduct = Math.min(nums[i], minProduct * nums[i]);
 
-            result = Math.max(result, maxProduct);
+            finalResult = Math.max(finalResult, maxProduct);
         }
 
-        return result;
+        return finalResult;
     }
 }
