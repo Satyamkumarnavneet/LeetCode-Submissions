@@ -2,8 +2,8 @@ class Solution {
     public int trap(int[] height) {
         int leftMax [] = new int [height.length];
         int trappedWater = 0;
-
         leftMax[0] = height[0];
+        
         for(int i = 1; i<height.length; i++){
             leftMax [i] = Math.max(height[i], leftMax[i-1]);
         }
@@ -18,7 +18,5 @@ class Solution {
             trappedWater += waterLevel - height[i];
         }
         return trappedWater;
-
-        
     }
 }
