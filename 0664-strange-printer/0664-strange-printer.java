@@ -1,6 +1,10 @@
 class Solution {
     public int strangePrinter(String s) {
         int n = s.length();
+        if (n == 0) {
+            return 0;
+        }
+
         int[][] dp = new int[n][n];
 
         for (int i = n - 1; i >= 0; i--) {
