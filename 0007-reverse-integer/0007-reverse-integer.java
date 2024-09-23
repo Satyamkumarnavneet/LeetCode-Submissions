@@ -1,19 +1,15 @@
 class Solution {
     public int reverse(int x) {
-        long finalNum = 0;
-        while(x!=0){
-            int lastDig = x%10;
-            finalNum += lastDig;
-            finalNum = finalNum*10;
-            x= x/10;
+        int reverseNum = 0;
+
+        while(x != 0){
+            int digit = x % 10;
+            if(reverseNum > Integer.MAX_VALUE/10 || reverseNum < Integer.MIN_VALUE/10){
+                return 0;
+            }
+            reverseNum = reverseNum * 10 + digit;
+            x /= 10;
         }
-        finalNum = finalNum/10;
-        if(finalNum > Integer.MAX_VALUE || finalNum<Integer.MIN_VALUE){
-            return 0;
-        }
-        if(x<0){
-            return (int)(-1*finalNum);
-        }
-        return (int)finalNum;
+        return reverseNum;
     }
 }
