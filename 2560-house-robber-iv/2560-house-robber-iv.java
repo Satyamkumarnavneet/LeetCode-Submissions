@@ -1,25 +1,32 @@
 class Solution {
     public int minCapability(int[] nums, int k) {
-        int n = nums.length;
-        int minCap = Integer.MAX_VALUE;
+        int left = 1;
+        int right = Integer.MAX_VALUE;
         
-        for (int i = 0; i < (1 << n); i++) {
-            int count = 0;
-            int maxRobbed = 0;
-            for (int j = 0; j < n; j++) {
-                if ((i & (1 << j)) != 0) {
-                    count++;
-                    maxRobbed = Math.max(maxRobbed, nums[j]);
-                    if (count > k) break;
-                    if (j + 1 < n && (i & (1 << (j + 1))) != 0) {
-                        break;
-                    }
-                }
-            }
-            if (count == k) {
-                minCap = Math.min(minCap, maxRobbed);
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            if (canRob(nums, mid, k)) {
+                right = mid;
+            } else {
+                left = mid + 1;
             }
         }
-        return minCap;
+        
+        return left;
+    }
+    
+    private boolean canRob(int[] nums, int cap, int k) {
+        int count = 0;
+        int i = 0;
+        while (i < nums.length) {
+            if (nums[i] <= cap) {
+                count++;
+                i += 2;
+            } else {
+                i++;
+            }
+            if (count >= k) return true;
+        }
+        return false;
     }
 }
